@@ -12,7 +12,7 @@ type Cliente struct {
 	Username           string
 	Dinero             decimal.Decimal
 	TiempoDisponible   time.Duration
-	AtraccionPreferida TipoAtraccion
+	AtraccionPreferida *TipoAtraccion
 	FechaAlta          time.Time
 	FechaActualizacion time.Time
 	FechaBaja          *time.Time
@@ -29,4 +29,8 @@ type CrearClienteService interface {
 
 type ValidarClienteService interface {
 	Validar(username, pwd string) error
+}
+
+type ActualizarPasswordClienteService interface {
+	ActualizarPassword(pwdAnterior, pwdNueva, pwdNuevaConfirmacion string) error
 }
